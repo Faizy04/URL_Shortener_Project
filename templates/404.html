@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Not Found - QuickLink</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="error-page">
+            <div class="error-content">
+                <i class="fas fa-unlink error-icon"></i>
+                <h1>404</h1>
+                <h2>URL Not Found</h2>
+                <p>The short URL you're looking for doesn't exist or has been removed.</p>
+                <a href="/" class="home-btn">
+                    <i class="fas fa-home"></i>
+                    Go Home
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

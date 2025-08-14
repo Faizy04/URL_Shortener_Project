@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-link"></i>
+                <h1>QuickLink</h1>
+            </div>
+            <p class="subtitle">Shorten your URLs in seconds</p>
+        </header>
+
+        <main>
+            <div class="url-form-container">
+                <form id="urlForm" class="url-form">
+                    <div class="input-group">
+                        <input 
+                            type="url" 
+                            id="urlInput" 
+                            placeholder="Enter your long URL here..." 
+                            required
+                        >
+                        <button type="submit" id="shortenBtn">
+                            <i class="fas fa-compress-alt"></i>
+                            Shorten
+                        </button>
+                    </div>
+                </form>
+                
+                <div id="loading" class="loading hidden">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Shortening URL...
+                </div>
+
+                <div id="error" class="error hidden"></div>
+            </div>
+
+            <div id="result" class="result hidden">
+                <div class="result-content">
+                    <h3>Your shortened URL is ready!</h3>
+                    <div class="url-display">
+                        <input type="text" id="shortUrl" readonly>
+                        <button id="copyBtn" class="copy-btn" title="Copy to clipboard">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="url-info">
+                        <!-- <p><strong>Original:</strong> <span id="originalUrl"></span></p> -->
+                        <div class="actions">
+                            <button id="visitBtn" class="action-btn">
+                                <i class="fas fa-external-link-alt"></i>
+                                Visit URL
+                            </button>
+                            <button id="statsBtn" class="action-btn">
+                                <i class="fas fa-chart-bar"></i>
+                                View Stats
+                            </button>
+                            <button id="shareBtn" class="action-btn">
+                                <i class="fas fa-share-alt"></i>
+                                Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="stats" class="stats hidden">
+                <div class="stats-content">
+                    <h3>URL Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <span class="stat-value" id="clickCount">0</span>
+                            <span class="stat-label">Clicks</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="stat-value" id="createdDate">-</span>
+                            <span class="stat-label">Created</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 QuickLink. Built by Faisal</p>
+        </footer>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Share URL</h3>
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <button class="share-btn" onclick="shareToTwitter()">
+                        <i class="fab fa-twitter"></i>
+                        Twitter
+                    </button>
+                    <button class="share-btn" onclick="shareToFacebook()">
+                        <i class="fab fa-facebook"></i>
+                        Facebook
+                    </button>
+                    <button class="share-btn" onclick="shareToWhatsApp()">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </button>
+                    <button class="share-btn" onclick="shareToEmail()">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
